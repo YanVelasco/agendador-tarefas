@@ -3,10 +3,13 @@ usuario:
 
 spring:
   application:
-    name: user
+    name: AgendadorTarefas
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/user-api
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/user-api
     username: postgres
     password: root
 
