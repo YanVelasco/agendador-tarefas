@@ -1,6 +1,7 @@
 package com.yanvelasco.agendadortarefas.domain.controller;
 
 import com.yanvelasco.agendadortarefas.domain.dto.TarefaDTO;
+import com.yanvelasco.agendadortarefas.domain.enums.StatusEnum;
 import com.yanvelasco.agendadortarefas.domain.service.TarefaService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -39,5 +40,19 @@ public class TarefaController {
     public ResponseEntity<List<TarefaDTO>> findByEmailDoUsuario(@RequestHeader("Authorization") String token){
         return tarefaService.findByEmailDoUsuario(token);
     }
-    
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletaTarefaPorId(@PathVariable String id){
+        return tarefaService.deletaTarefaPorId(id);
+    }
+
+    @PatchMapping
+    public ResponseEntity<TarefaDTO> alteraStatus(@RequestParam("status") String status, @RequestParam("id") String id) {
+        return tarefaService.alterarStatus(StatusEnum.valueOf(status), id);
+    }
+
+    @PutMapping()
+    public ResponseEntity<TarefaDTO> updateDeTarefa(@RequestBody TarefaDTO tarefaDTO, @RequestParam("id") String id) {
+        return tarefaService.updateDeTarefa(tarefaDTO, id);
+    }
 }
