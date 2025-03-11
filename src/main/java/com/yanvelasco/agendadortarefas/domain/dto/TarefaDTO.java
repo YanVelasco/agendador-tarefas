@@ -19,6 +19,7 @@ public class TarefaDTO {
 
     private String descricao;
 
+    @JsonFormat(shape =  JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataCriacao;
 
     @JsonFormat(shape =  JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
@@ -26,6 +27,7 @@ public class TarefaDTO {
 
     private String emailDoUsuario;
 
+    @JsonFormat(shape =  JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataUltimaAtualizacao;
 
     private StatusEnum status;

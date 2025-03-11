@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class TarefaServiceImpl implements TarefaService {
@@ -40,4 +41,21 @@ public class TarefaServiceImpl implements TarefaService {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(savedDTO);
     }
+
+
+    public ResponseEntity<List<TarefaDTO>> findByDataEventoBetween(LocalDateTime dataEventoInicial,
+                                                                   LocalDateTime dataEventoFinal) {
+        List<TarefaEntity> tarefaEntities = tarefaRepository.findByDataEventoBetween(dataEventoInicial,
+                dataEventoFinal);
+        List<TarefaDTO> tarefaDTOs = tarefaMapper.toListDTO(tarefaEntities);
+        return ResponseEntity.ok(tarefaDTOs);
+    }
+
+    public ResponseEntity<List<TarefaDTO>> findByEmailDoUsuario(String emailDoUsuario) {
+        String email = jwtUtil.extractUsername(emailDoUsuario.substring(7));
+        List<TarefaEntity> tarefaEntities = tarefaRepository.findByEmailDoUsuario(email);
+        List<TarefaDTO> tarefaDTOs = tarefaMapper.toListDTO(tarefaEntities);
+        return ResponseEntity.ok(tarefaDTOs);
+    }
+
 }

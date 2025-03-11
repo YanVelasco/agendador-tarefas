@@ -5,6 +5,8 @@ import com.yanvelasco.agendadortarefas.domain.entity.TarefaEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface TarefasMapper {
 
@@ -12,4 +14,5 @@ public interface TarefasMapper {
 
     TarefaDTO toDTO(TarefaEntity tarefaEntity);
 
+    List<TarefaDTO> toListDTO(List<TarefaEntity> tarefaEntities);
 }
