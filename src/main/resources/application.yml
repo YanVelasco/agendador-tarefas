@@ -1,3 +1,6 @@
+server:
+  port: 8081
+
 usuario:
   url: http://localhost:8080
 
@@ -7,11 +10,7 @@ spring:
 
   data:
     mongodb:
-      uri: mongodb://localhost:27017/user-api
-
-  datasource:
-    username: postgres
-    password: root
+      uri: mongodb://localhost:27017/db_agendador
 
   jpa:
     show-sql: true
